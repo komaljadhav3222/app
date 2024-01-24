@@ -1,0 +1,15 @@
+.searchDiv{
+    background-color: rgb(78, 115, 208);
+    height: 50px;
+    align-items: center;
+}
+input[type="text"] {
+    display: block;
+    margin : 0 auto;
+    width: 200px;
+    height: 25px;
+}
+button{
+    display: block;
+    margin : 0 auto;
+}
