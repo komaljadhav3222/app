@@ -1,0 +1,15 @@
+<p>http-movie works!</p>
+<div>
+    <input type="text" [(ngModel)]="searchText" id="searchText" name="searchText" placeholder="Enter search text"  />
+    <button (click)="searchMovie(searchText)">Search</button>
+  </div>
+  
+    <div class="col-md-3 mb-4">
+      <tr *ngFor="let image of backdropPaths; let i = index">
+        <td>
+            <img [src]="image" alt="movieImage" [width]="200" [height]="200">          
+           
+        <p>{{MovieNames[i]}}</p>   
+        </td> 
+      </tr>
+</div>
