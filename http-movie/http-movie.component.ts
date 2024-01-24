@@ -12,6 +12,7 @@ export class HttpMovieComponent implements OnInit {
   MovieNames:any;
   result:any=[];
   searchText: string = '';
+  MovieId:any;
   imgPrefix:string="https://www.themoviedb.org/t/p/w1280"
 
   constructor(private _httpMovie:HttpMovieService) { }
@@ -25,7 +26,7 @@ export class HttpMovieComponent implements OnInit {
       this.response=res;
      this.backdropPaths = res.results.map((movie: { backdrop_path: any }) => this.imgPrefix+movie.backdrop_path);
      this.MovieNames = res.results.map((movie: { original_title: any }) => movie.original_title);
-   
+     this.MovieId = res.results.map((movie: { id: any }) => movie.id);
      
       console.log("backdrop_path = ",this.backdropPaths,"Movie Name = ",this.MovieNames);
       
@@ -37,5 +38,10 @@ export class HttpMovieComponent implements OnInit {
   
  })
  
+}
+getMoviesDetails(MovieName:string){
+  this._httpMovie.getMoviesDetails(MovieName).subscribe((res)=>{
+    console.log("GetMovies response",res);   
+})
 }
 }

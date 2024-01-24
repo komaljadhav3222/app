@@ -9,7 +9,7 @@
         <td>
             <img [src]="image" alt="movieImage" [width]="200" [height]="200">          
            
-        <p>{{MovieNames[i]}}</p>   
+        <p><a (click)="getMoviesDetails(MovieId[i])">{{MovieNames[i]}} </a></p>   
         </td> 
       </tr>
 </div>

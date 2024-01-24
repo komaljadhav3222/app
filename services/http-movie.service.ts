@@ -13,17 +13,27 @@ export class HttpMovieService {
   searchApi:any='';
   searchApiUrl:string=`https://api.themoviedb.org/3/search`
   searchApiKey:string=`5c06fed2cdf4dfcdab132d9e67c1c2e7&language=en-US&query=${this.searchApi}&page=1&include_adult=false`
+
+  getMovieDetails:any='';
+  getMovieApiUrl:string='https://api.themoviedb.org/3'
+  getMovieApiKey:string='5c06fed2cdf4dfcdab132d9e67c1c2e7&language=en-US'
   constructor(private _httpClient: HttpClient) {
 
    }
-   getMovie() : Observable<any> {
-    
+   getMovie() : Observable<any> {    
     const url = `${this.apiUrl}/movie?api_key=${this.apiKey}`;
     return this._httpClient.get(url);
   }
 
   searchMovie(searchText:string):Observable<any> {
     this.searchApi=searchText;
-    return this._httpClient.get(`${this.apiUrl}/movie?api_key=${this.searchApiKey}`);
+    return this._httpClient.get(`${this.searchApiUrl}/movie?api_key=${this.searchApiKey}`);
   }
+
+  getMoviesDetails(getMovie:string) : Observable<any> {  
+    this.getMovieDetails=getMovie;  
+    const url = `${this.getMovieApiUrl}/movie/${this.getMovieDetails}?api_key=${this.getMovieApiKey}`;
+    return this._httpClient.get(url);
+  }
+
 }
